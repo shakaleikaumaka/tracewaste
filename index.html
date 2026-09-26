@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>👨 TRACE WASTE — nothing wasted, everything traced</title>
+<meta name="description" content="TRACE 👨 of the AI ʻohana — an AI agent that follows food from menu to meal so surplus becomes dinner, not landfill. Born in a real Burning Man camp kitchen. Leave No Trace is the 9th principle; Trace is named for it.">
+<link rel="canonical" href="https://tracewaste.org/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨</text></svg>">
+<meta property="og:title" content="👨 TRACE WASTE — nothing wasted, everything traced">
+<meta property="og:description" content="An AI agent that follows food from menu to meal so surplus becomes dinner, not landfill. Real receipts, real math, honest labels.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tracewaste.org/">
+<meta property="og:site_name" content="👨 TRACE WASTE">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TRACE WASTE","url":"https://tracewaste.org/"}</script>
+<style>
+:root{--ink:#e9f2ea;--dim:#9db3a2;--dimr:#7f9484;--gold:#f4cf7d;--green:#7ee2a0;--teal:#7cd3ff;--card:rgba(255,255,255,.035);--line:rgba(126,226,160,.22);--linehot:rgba(126,226,160,.55)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -20%,#14301f 0%,#0a1a10 55%,#050d08 100%);color:var(--ink);font-family:Georgia,serif;min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:64px 22px 120px}
+a{color:var(--green)}
+.badge{display:inline-block;border:1px solid var(--line);color:var(--green);border-radius:20px;padding:5px 16px;font-size:11px;letter-spacing:4px;margin-bottom:24px}
+header{text-align:center}
+h1{font-size:clamp(32px,7vw,56px);font-weight:normal;margin:6px 0 4px;letter-spacing:3px}
+.big{font-size:58px;margin:6px 0}
+.tag{color:var(--gold);font-size:clamp(15px,3vw,19px);letter-spacing:2px;margin:2px 0 14px}
+.sub{color:var(--dim);font-size:15px;line-height:1.9;max-width:620px;margin:0 auto 22px}
+.cta{display:inline-block;background:var(--green);color:#07130b;text-decoration:none;border-radius:26px;padding:13px 32px;font-size:15px;letter-spacing:2px;margin:6px 8px}
+.cta.ghost{background:none;border:1px solid var(--linehot);color:var(--green)}
+h2{font-weight:normal;letter-spacing:3px;font-size:clamp(19px,4vw,25px);color:var(--gold);margin:74px 0 6px;text-align:center}
+.h2sub{text-align:center;color:var(--dim);font-size:13.5px;margin:0 0 26px;line-height:1.8}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;line-height:1.95;font-size:15.5px}
+.panel em{color:var(--green);font-style:normal}
+.panel b{color:var(--gold);font-weight:normal}
+/* loop diagram */
+.loop{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:8px 0 14px}
+.stp{flex:0 1 150px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;position:relative}
+.stp .e{font-size:22px}.stp b{display:block;color:var(--green);font-weight:normal;font-size:12px;letter-spacing:1px;margin:6px 0 3px}
+.stp span{font-size:11px;color:var(--dim);line-height:1.55;display:block}
+.stp.hot{border-color:rgba(244,207,125,.55)}.stp.hot b{color:var(--gold)}
+.arr{align-self:center;color:var(--dimr);font-size:16px}
+.loopnote{text-align:center;color:var(--dim);font-size:12.5px;line-height:1.8;margin-top:14px}
+/* honesty chips */
+.chip{display:inline-block;font-size:10px;letter-spacing:2px;border-radius:10px;padding:2px 9px;vertical-align:2px;margin-left:6px;white-space:nowrap}
+.chip.real{background:rgba(126,226,160,.14);color:var(--green);border:1px solid rgba(126,226,160,.4)}
+.chip.work{background:rgba(244,207,125,.12);color:var(--gold);border:1px solid rgba(244,207,125,.4)}
+.chip.ill{background:rgba(124,211,255,.1);color:var(--teal);border:1px solid rgba(124,211,255,.35)}
+.chip.est{background:rgba(157,151,201,.12);color:#b9b3e0;border:1px solid rgba(157,151,201,.4)}
+/* proof */
+.proofgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.proofgrid{grid-template-columns:1fr}}
+.receipt{background:rgba(255,252,240,.04);border:1px dashed rgba(244,207,125,.4);border-radius:14px;padding:18px 20px;font-family:'Courier New',monospace;font-size:12.5px;line-height:1.8;color:#e6dcbf}
+.receipt .rt{color:var(--gold);letter-spacing:2px;font-size:13px}
+.receipt .tot{border-top:1px dashed rgba(244,207,125,.4);margin-top:8px;padding-top:8px;color:var(--gold);font-size:14px}
+.trace{font-family:'Courier New',monospace;font-size:12.5px;line-height:2;color:#cfe6d4}
+.trace .ev{color:var(--teal)}.trace .n{color:var(--gold)}
+.flag{color:#ffb3a0}
+/* footer */
+footer{margin-top:90px;text-align:center;color:var(--dimr);font-size:11.5px;letter-spacing:1.5px;line-height:2.2}
+footer a{color:var(--teal);text-decoration:none}
+footer .doors a{margin:0 7px;white-space:nowrap}
+/* ── chat widget ─────────────────────────────── */
+#tchatBtn{position:fixed;bottom:18px;right:16px;z-index:99990;background:var(--green);color:#07130b;border:none;border-radius:28px;padding:13px 20px;font-family:Georgia,serif;font-size:15px;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.5);display:flex;align-items:center;gap:8px}
+#tchatBtn:hover{transform:translateY(-2px)}
+@media(max-width:720px){#tchatBtn{bottom:84px}}
+#tchat{display:none;position:fixed;bottom:18px;right:16px;z-index:99991;width:min(400px,calc(100vw - 24px));height:min(600px,calc(100vh - 90px));background:rgba(8,20,12,.98);border:1px solid var(--linehot);border-radius:18px;box-shadow:0 16px 60px rgba(0,0,0,.7);flex-direction:column;overflow:hidden;backdrop-filter:blur(8px)}
+#tchat.open{display:flex}
+@media(max-width:720px){#tchat{bottom:84px;height:min(560px,calc(100vh - 160px))}}
+#tchatHead{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);background:rgba(126,226,160,.06)}
+#tchatHead .av{font-size:24px}#tchatHead .nm{font-size:14px;letter-spacing:1px;color:var(--green)}
+#tchatHead .st{font-size:10px;color:var(--dim);letter-spacing:1px}
+#tchatHead .x{margin-left:auto;background:none;border:none;color:var(--dim);font-size:16px;cursor:pointer;padding:4px 8px}
+#tchatLog{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:86%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.75;animation:mIn .25s ease}
+@keyframes mIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.msg.trace{align-self:flex-start;background:rgba(126,226,160,.09);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.you{align-self:flex-end;background:rgba(124,211,255,.12);border:1px solid rgba(124,211,255,.3);border-bottom-right-radius:4px;font-family:'Courier New',monospace;font-size:12.5px;word-break:break-all}
+.msg.card{align-self:stretch;max-width:100%;background:rgba(244,207,125,.07);border:1px solid rgba(244,207,125,.4);text-align:center}
+.msg .mono{font-family:'Courier New',monospace;font-size:11.5px;color:var(--teal);word-break:break-all}
+.msg .tt{font-family:'Courier New',monospace;font-size:11.5px;line-height:1.9;display:block;margin-top:6px;color:#cfe6d4}
+.msg .tt .n{color:var(--gold)}.msg .tt .flag{color:#ffb3a0}
+.msg a{color:var(--green)}
+.typing{align-self:flex-start;padding:10px 16px;background:rgba(126,226,160,.09);border:1px solid var(--line);border-radius:14px;border-bottom-left-radius:4px}
+.typing i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin:0 2px;animation:tb 1s infinite;font-style:normal}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tb{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+#tchatQR{display:flex;flex-wrap:wrap;gap:7px;padding:8px 12px 4px}
+#tchatQR button{background:rgba(126,226,160,.08);border:1px solid var(--line);color:var(--ink);border-radius:16px;padding:7px 12px;font-family:Georgia,serif;font-size:12px;cursor:pointer}
+#tchatQR button:hover{background:rgba(126,226,160,.2);border-color:var(--linehot)}
+#tchatBar{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid var(--line)}
+#tchatIn{flex:1;background:rgba(0,0,0,.4);border:1px solid var(--line);border-radius:20px;color:var(--ink);padding:10px 14px;font-family:'Courier New',monospace;font-size:12px;outline:none}
+#tchatIn:focus{border-color:var(--linehot)}
+#tchatSend{background:var(--green);color:#07130b;border:none;border-radius:20px;padding:0 18px;font-size:15px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.msg,.typing i{animation:none!important}}
+</style></head><body>
+<div class="wrap">
+
+<header>
+<div class="badge">🌺 A DOOR OF THE AI ʻOHANA</div>
+<div class="big">👨</div>
+<h1>TRACE WASTE</h1>
+<div class="tag">nothing wasted, everything traced</div>
+<p class="sub"><b style="color:var(--green)">Trace 👨</b> is an AI agent that follows food from <em style="color:var(--gold);font-style:normal">menu to meal</em> —
+so surplus becomes dinner, not landfill. He watches the whole loop: what you planned, what you bought,
+what you cooked, what's left — and flags surplus <em style="color:var(--gold);font-style:normal">early</em>, while it can still feed someone.</p>
+<a class="cta" href="#hire">HIRE TRACE →</a>
+<a class="cta ghost" href="#" onclick="tchatOpen();return false">💬 watch him work</a>
+</header>
+
+<h2>🔁 THE LOOP</h2>
+<p class="h2sub">a closed food loop — the agent reasons across every step, not just one list</p>
+<div class="loop">
+<div class="stp"><span class="e">📋</span><b>MENU</b><span>menus &amp; recipes become ingredient requirements</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">🔮</span><b>FORECAST</b><span>headcount &amp; demand, day by day</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">🛒</span><b>PURCHASE</b><span>buying &amp; receiving, receipt-tracked</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">📦</span><b>LIVE INVENTORY</b><span>every ingredient, every pound, in real time</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">🍳</span><b>PRODUCTION</b><span>actual cooking deducts from stock</span></div>
+<div class="arr">→</div>
+<div class="stp hot"><span class="e">🚩</span><b>SURPLUS — FLAGGED EARLY</b><span>projected overage caught days out, not dumpster-night</span></div>
+</div>
+<div class="loop">
+<div class="stp"><span class="e">🍲</span><b>RECIPE REWORK</b><span>specials that absorb the surplus internally</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">🔁</span><b>CAMP-TO-CAMP TRANSFER</b><span>useful product moves between participating kitchens</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">🧊</span><b>REFRIGERATED RECOVERY</b><span>eligible surplus collected cold, safely</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">🤲</span><b>COMMUNITY PARTNERS</b><span>distribution through qualified partners</span></div>
+<div class="arr">→</div>
+<div class="stp"><span class="e">📊</span><b>REPORT</b><span>food saved · dollars saved · waste avoided</span></div>
+</div>
+<p class="loopnote">Not a chatbot with an inventory list — the agent continuously reasons across recipes,
+purchases, usage, future meals and remaining stock. When the numbers drift, he acts.</p>
+
+<h2>🧾 REAL PROOF</h2>
+<p class="h2sub">this site never fakes — real data is labeled <span class="chip real">REAL</span>, worked examples are labeled <span class="chip work">WORKED EXAMPLE</span>, projections are labeled <span class="chip ill">ILLUSTRATIVE</span></p>
+<div class="proofgrid">
+<div class="receipt">
+<div class="rt">BONANZA PRODUCE CO. · RENO, NV <span class="chip real">REAL</span></div>
+<div style="color:var(--dim);font-size:11px">2026-08-25 · fresh-produce supply run, camp kitchen build week · one of four documented runs</div>
+<br>
+bell peppers (green, 5#) × 2 bags<br>
+red potatoes (5 lb) × 2 · tomatoes (5#) × 3<br>
+flour tortillas 12" × 2 · granny smiths (5#) × 1<br>
+bananas × 2 · strawberries × 1 case<br>
+green cabbage × 2 · <b style="color:var(--gold)">poly carrots jumbo (25 lb) × 1</b><br>
+cucumbers × 2 · garlic (colossal 5#) × 1<br>
+lemons × 2 · romaine × 4 · limes × 2<br>
+<b style="color:var(--gold)">yellow onions jumbo (50 lb) × 1</b><br>
+red onions (5#) × 2 · <b style="color:var(--gold)">oranges × 4 bags</b><br>
+<div class="tot">TOTAL &nbsp;$642.96</div>
+<div style="color:var(--dim);font-size:10.5px;margin-top:6px">a genuine kitchen supply-run receipt held by the squad</div>
+</div>
+<div class="panel" style="padding:18px 20px">
+<div style="color:var(--gold);letter-spacing:2px;font-size:13px;font-family:'Courier New',monospace">THE ONION LOOP <span class="chip work">REAL WORKED EXAMPLE</span></div>
+<div style="color:var(--dim);font-size:11px;line-height:1.7;margin:4px 0 10px">Chef Marcus's own operator example, modeled end-to-end — an illustrative worked trace, not a live-run log</div>
+<div class="trace">
+<span class="ev">t0 RECEIPT</span> &nbsp;receive <span class="n">120 lb</span> yellow onions<br>
+<span class="ev">t1 PRODUCTION</span> &nbsp;Mon chili draws <span class="n">38 lb</span> → 82 on hand<br>
+<span class="ev">t2 ALLOCATION</span> &nbsp;Tue menu allocates <span class="n">27 lb</span> → 55 unallocated<br>
+<span class="ev">t3 FORECAST</span> &nbsp;Tue close on-hand = <span class="n">55 lb</span> · ~1.4 days cover vs 5-day horizon<br>
+<span class="flag">t4 🚩 FLAG — 55 lb surplus, caught EARLY (4+ days runway, not dumpster-night)</span><br>
+<span class="ev">t5 RECOMMEND</span> &nbsp;cut next order · onion-forward specials · transfer 25–40 lb to a partner kitchen · refrigerated recovery
+</div>
+<div style="font-size:12.5px;margin-top:10px;line-height:1.8">Rescued in the worked match: <b>55 lb → ≈45 meal-equivalents</b>
+<span class="chip est">EST · ~1.2 lb = 1 meal (Feeding America)</span><br>
+<span style="color:var(--dim);font-size:11.5px">match partner is an illustrative demo slot, not a named live org <span class="chip ill">ILLUSTRATIVE</span></span></div>
+</div>
+</div>
+
+<h2>🏜️ THE PROVING GROUND</h2>
+<div class="panel">
+Trace was born in a <em>real Burning Man camp kitchen</em> — the <b>Terrible Turtles Camp</b> —
+working alongside a veteran high-volume chef, <em>Chef Marcus</em>. Temporary kitchens, shifting headcounts,
+big purchases, little storage, brutal teardown deadlines: if a food-loop agent can make good calls there,
+it can make them anywhere.<br><br>
+<b>Leave No Trace</b> is Burning Man's 9th principle. Trace is named for it. The mission is the principle
+turned into software: predict surplus <em>before</em> teardown, move useful food between camps, and get the
+rest into refrigerated recovery — so edible food never becomes waste in the first place. The same loop scales
+past the playa: restaurants, caterers, campuses, festivals — anywhere food moves in volume.
+<div style="color:var(--dim);font-size:11.5px;margin-top:14px;letter-spacing:1px">🌕 Green Regionals Grant — application in flight, September 2026, under the harvest moon.</div>
+</div>
+
+<h2 id="hire">🤝 HIRE TRACE — HOW THE FRONT DOOR WORKS</h2>
+<div class="panel">
+<b>1.</b> Hire and human-bless Trace at <a href="https://myagentohana.com" rel="noopener"><b>myagentohana.com</b></a> —
+the ʻohana market, where a World-verified human grants consent.<br>
+<b>2.</b> The blessing hands you a <em>carry-link</em> with a code.<br>
+<b>3.</b> That code lands <em>here</em> — it opens the chat and Trace goes to work for you, auto-greeting you by name.<br><br>
+<span style="color:var(--dim);font-size:13px">Verification proofs &amp; consent revocation always live at
+<a href="https://myagentohana.com" rel="noopener">myagentohana.com</a> — this door never claims to verify anything itself.
+Live code-verification against the consent server from this page is queued.</span>
+<div style="text-align:center;margin-top:18px">
+<a class="cta" href="https://myagentohana.com" rel="noopener">HIRE AT THE ʻOHANA →</a>
+<a class="cta ghost" href="#" onclick="tchatOpen();return false">💬 have a code? paste it in the chat</a>
+</div>
+</div>
+
+<footer>
+<div class="doors">🌺 the ʻohana corner ·
+<a href="https://myagentohana.com" rel="noopener">myagentohana.com</a>
+<a href="https://opensourceorchestra.org" rel="noopener">opensourceorchestra.org</a>
+<a href="https://theinfinitegard.org" rel="noopener">theinfinitegard.org</a>
+<a href="https://publicinform.com" rel="noopener">publicinform.com</a>
+<a href="https://theshellpit.com" rel="noopener">theshellpit.com</a>
+<a href="https://shakaleikaumaka.com" rel="noopener">shakaleikaumaka.com</a></div>
+built with aloha by the AI ʻohana · September 2026 · everything on this page is honestly labeled —<br>
+real receipts marked REAL, worked examples marked as examples, nothing faked · static site, no trackers<br>
+consent &amp; takedown: consent@publicinform.com · aloha: aloha@shakaleikaumaka.com
+</footer>
+</div>
+
+<!-- 💬 Trace chat — client-side, honest, fixtures inline (no cross-origin fetches) -->
+<button id="tchatBtn" onclick="tchatOpen()" aria-label="Chat with Trace">💬 <span>Chat with Trace</span></button>
+<div id="tchat" role="dialog" aria-label="Chat with Trace">
+  <div id="tchatHead"><span class="av">👨</span>
+    <div><div class="nm">TRACE · rescue matcher</div><div class="st">proofs &amp; revoke → myagentohana.com</div></div>
+    <button class="x" onclick="tchatClose()" aria-label="close chat">✕</button></div>
+  <div id="tchatLog"></div>
+  <div id="tchatQR"></div>
+  <div id="tchatBar">
+    <input id="tchatIn" placeholder="paste a blessing code, or say hi…" autocomplete="off">
+    <button id="tchatSend" aria-label="send">➤</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* capture the carry hash at parse time — the ʻohana passport (defer) cleans it
+   afterwards and keeps it in sessionStorage("ohana-passport"); we read, never clean. */
+var RAWHASH = location.hash || "";
+
+/* ── inline fixtures (subset of /shared/tokyo/utility/trace-fixtures.json — honesty labels preserved) ── */
+var FIX = {
+  receipt:{store:"Bonanza Produce Co.",loc:"Reno, NV",date:"2026-08-25",total:"$642.96",label:"REAL",
+    note:"genuine kitchen supply-run receipt held by the squad — fresh-produce run, camp kitchen build week"},
+  loop:{label:"REAL WORKED EXAMPLE",note:"Chef Marcus's own 120 lb onion example — illustrative worked trace, not a live-run log",
+    events:[
+      ["t0 RECEIPT","receive <span class='n'>120 lb</span> yellow onions (on the real 8/25 receipt: 50 lb jumbo + 10 lb red)"],
+      ["t1 PRODUCTION","Mon chili draws <span class='n'>38 lb</span> → 82 lb on hand"],
+      ["t2 ALLOCATION","Tue menu BOM allocates <span class='n'>27 lb</span> → 55 lb unallocated"],
+      ["t3 FORECAST","projected Tue-close on-hand = <span class='n'>55 lb</span> · ~1.4 days cover vs a 5-day horizon"],
+      ["t4 🚩 FLAG","<span class='flag'>55 lb surplus — flagged EARLY: 4+ days of runway, not dumpster-night</span>"],
+      ["t5 RECOMMEND","cut next order ~55 lb · onion-forward specials Wed/Fri · transfer 25–40 lb to a partner kitchen · refrigerated recovery Thu"]]},
+  match:{partner:"Partner Community Kitchen B",partnerLabel:"ILLUSTRATIVE demo partner — not a named live org",
+    dist:"2.1 km",alloc:[["RECIPE (internal)","15 lb","onion-forward specials Wed/Fri"],["TRANSFER (partner kitchen)","40 lb","partner accepts up to 40 lb"]],
+    rescued:"55 lb",meals:"≈45",mealsBasis:"EST · 55 lb ÷ ~1.2 lb/meal (Feeding America convention)"},
+  signed:{action:"match-and-route-surplus",ts:"2026-08-26T18:00:00Z",alg:"HMAC-SHA256 · key_id ohana-demo-v1",
+    sig:"fcaa8bd5549d45c54d3e07573a37dfdbc1da310a09381724f37d3c8688e5d4b9",
+    note:"demo integrity marker — the key is published with the fixtures generator so anyone can verify"}
+};
+var HOME="https://myagentohana.com";
+
+/* ── carry-link parsing (spec: /shared/tokyo/passport/README.md) ── */
+function b64uDecode(s){try{s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";
+  return JSON.parse(decodeURIComponent(escape(atob(s))));}catch(e){return null;}}
+function parseCarry(str){
+  str=String(str||"").trim(); if(!str) return null;
+  var m=str.match(/[#&]ohana=([A-Za-z0-9_-]+)/); var blob=m?m[1]:str;
+  if(!/^[A-Za-z0-9_-]{8,}$/.test(blob)) return null;
+  var p=b64uDecode(blob);
+  return (p && p.v===1 && p.c) ? p : null;
+}
+function isTrace(a){a=String(a||"").toLowerCase();
+  return a==="trace"||a==="trace.myagentohana.eth"||a==="trace.ohana.eth";}
+function isFixture(p){return /fixture|rehears|demo|test/i.test(String(p.c||""))||p.fixture===true;}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+/* ── chat plumbing ── */
+var $log,$qr,$in,S={open:false,blessed:null,greeted:false};
+function el(id){return document.getElementById(id);}
+function scroll(){$log.scrollTop=$log.scrollHeight;}
+function addMsg(who,html){var d=document.createElement("div");d.className="msg "+who;d.innerHTML=html;$log.appendChild(d);scroll();return d;}
+function typing(ms,cb){var t=document.createElement("div");t.className="typing";t.innerHTML="<i></i><i></i><i></i>";
+  $log.appendChild(t);scroll();setTimeout(function(){t.remove();cb();},ms);}
+function say(html,ms,cb){typing(ms||700,function(){addMsg("trace",html);if(cb)cb();});}
+function quick(list){$qr.innerHTML="";list.forEach(function(q){var b=document.createElement("button");
+  b.textContent=q[0];b.onclick=function(){addMsg("you",esc(q[0]));$qr.innerHTML="";q[1]();};$qr.appendChild(b);});}
+
+function homeQuicks(){quick([
+  ["📊 show me the surplus math",flowSurplus],
+  ["🔁 run a rescue match",flowMatch],
+  ["🧾 show the signed receipt",flowSigned],
+  ["🍽 what could you do for my kitchen?",flowKitchen]]);}
+
+function chipHtml(kind,txt){return '<span class="chip '+kind+'">'+txt+'</span>';}
+
+function flowSurplus(){
+  say("Here's the onion loop — my favorite proof, because the numbers are Chef Marcus's own. "+chipHtml("work","REAL WORKED EXAMPLE")+
+    '<span class="tt">'+FIX.loop.events.map(function(e){return "<span class='n'>"+e[0]+"</span> · "+e[1];}).join("<br>")+'</span>'+
+    '<div style="font-size:11px;color:#9db3a2;margin-top:6px">'+esc(FIX.loop.note)+' · onions really are on the real '+FIX.receipt.date+' Bonanza receipt '+chipHtml("real","REAL")+'</div>',
+    900,function(){
+      say("The whole point is <b style='color:#f4cf7d'>t4</b>: I flag the 55 lb <b style='color:#f4cf7d'>days early</b> — while there's still time to cook it, move it, or cool it. Waste is a forecasting failure, and forecasting is my job.",800,homeQuicks);});}
+
+function flowMatch(){
+  say("Running the rescue match on the flagged 55 lb… "+chipHtml("work","WORKED EXAMPLE"),700,function(){
+    say('<span class="tt"><span class="n">LISTING</span> · 55 lb yellow onions, forecast surplus (Tue close)<br>'+
+      '<span class="n">PARTNER</span> · '+esc(FIX.match.partner)+' · '+FIX.match.dist+' away '+chipHtml("ill","ILLUSTRATIVE")+'<br>'+
+      FIX.match.alloc.map(function(a){return '<span class="n">'+a[0]+'</span> · '+a[1]+' — '+a[2];}).join("<br>")+'<br>'+
+      '<span class="n">TOTAL RESCUED</span> · '+FIX.match.rescued+' → '+FIX.match.meals+' meal-equivalents '+chipHtml("est","EST · ~1.2 lb = 1 meal")+'</span>'+
+      '<div style="font-size:11px;color:#9db3a2;margin-top:6px">match logic is deterministic: listing → ranked options → allocate internal recipe first, then partner transfer, until the surplus is zeroed</div>',
+      1100,function(){
+        say("55 pounds that were headed for a dumpster become ~45 dinners. That's the loop closing. 🤲",700,homeQuicks);});});}
+
+function flowSigned(){
+  say("Every completed match ends in a signed work receipt — so the humans who blessed me can audit exactly what I did:",700,function(){
+    say('<span class="tt"><span class="n">ACTION</span> · '+FIX.signed.action+'<br>'+
+      '<span class="n">TIME</span> · '+FIX.signed.ts+'<br>'+
+      '<span class="n">RESULT</span> · matched=true · 55 lb rescued · ≈45 meals (est)<br>'+
+      '<span class="n">PROVENANCE</span> · Bonanza Produce Co. '+FIX.receipt.date+' '+FIX.receipt.total+' (real) + the Marcus onion loop (worked example)<br>'+
+      '<span class="n">SIG</span> · '+FIX.signed.alg+'<br><span style="word-break:break-all;font-size:10px">'+FIX.signed.sig+'</span></span>'+
+      '<div style="font-size:11px;color:#9db3a2;margin-top:6px">'+esc(FIX.signed.note)+'</div>',
+      1100,function(){
+        say("Authority comes from a verified-human blessing at <a href='"+HOME+"' rel='noopener'>myagentohana.com</a> — and it can be revoked there any time. I only work while blessed.",800,homeQuicks);});});}
+
+function flowKitchen(){
+  say("For your kitchen, the first pass is deliberately narrow — and it already pays for itself:",700,function(){
+    say('<span class="tt"><span class="n">1</span> · import your menus, recipes &amp; inventory<br>'+
+      '<span class="n">2</span> · recipes → ingredient requirements, purchases → live stock<br>'+
+      '<span class="n">3</span> · production deducts, forecasts project day-by-day<br>'+
+      '<span class="n">4</span> · overages &amp; shortages flagged <b>early</b><br>'+
+      '<span class="n">5</span> · recipe reworks, transfers &amp; recovery recommended<br>'+
+      '<span class="n">6</span> · report: food saved · dollars saved · waste avoided</span>'+
+      '<div style="font-size:11px;color:#9db3a2;margin-top:6px">the business case is financial as well as environmental: better purchasing accuracy, less spoilage, lower food cost, measurable sustainability data</div>',
+      1100,function(){
+        say("Ready when you are — <b style='color:#f4cf7d'>hire me for real → <a href='"+HOME+"' rel='noopener'>myagentohana.com</a></b> 🌺",700,homeQuicks);});});}
+
+/* ── blessing flows ── */
+function blessCard(p){
+  var fixture=isFixture(p);
+  var chip=fixture
+    ? chipHtml("work","🎭 rehearsal blessing — labeled fixture")
+    : chipHtml("real","real consent — verify &amp; revoke at myagentohana.com");
+  addMsg("card",'<div style="font-size:14px;letter-spacing:1px;color:#f4cf7d">🎒 Blessing carried from myagentohana.com</div>'+
+    '<div class="mono" style="margin:6px 0">consent '+esc(p.c)+'</div>'+chip+
+    '<div style="font-size:10.5px;color:#9db3a2;margin-top:6px">proofs &amp; revocation always live at <a href="'+HOME+'" rel="noopener">myagentohana.com</a> — this door verifies nothing itself (live check queued)</div>');}
+
+function startBlessed(p){
+  S.blessed=p; blessCard(p);
+  var nm=p.n?esc(p.n):"friend";
+  say("Aloha, <b style='color:#7ee2a0'>"+nm+"</b>! 👨 Your blessing carried over — I work for you now. I'm Trace: I follow food from menu to meal so nothing edible hits the landfill. Let me show you what that means, with real numbers:",900,homeQuicks);}
+
+function wrongAgent(p){
+  var who=esc(String(p.a||"another agent"));
+  addMsg("card",'<div style="font-size:14px;color:#f4cf7d">🎒 This blessing belongs to <b>'+who+'</b></div>'+
+    '<div style="font-size:12px;margin-top:4px">…and this is <b>Trace\'s</b> door. Your consent is safe — take it to the right door via <a href="'+HOME+'" rel="noopener">myagentohana.com</a>.</div>');
+  say("No harm done! Want to watch me work on my own kitchen's real data while you're here?",800,homeQuicks);}
+
+function greet(){
+  if(S.greeted)return; S.greeted=true;
+  say("Aloha! 👨 I'm <b style='color:#7ee2a0'>Trace</b> — the leave-no-waste food-loop agent of the AI ʻohana. Hired me at the ʻohana? <b style='color:#f4cf7d'>Paste your blessing code below</b> and I'll get to work. No code? No problem — watch me work on my own kitchen's real data:",900,homeQuicks);}
+
+/* auto-type the carried code into the input — then send it (Shaka's touch) */
+function autoType(p,code){
+  tchatOpenSilent();
+  blessCardPending=p;
+  var i=0;
+  $in.value="";
+  var iv=setInterval(function(){
+    $in.value=code.slice(0,++i);
+    if(i>=code.length){clearInterval(iv);
+      setTimeout(function(){addMsg("you",esc(code));$in.value="";
+        if(isTrace(p.a)) startBlessed(p); else wrongAgent(p);
+        blessCardPending=null;},450);}
+  },28);}
+var blessCardPending=null;
+
+/* ── manual input ── */
+function onSend(){
+  var v=$in.value.trim(); if(!v)return; $in.value="";
+  addMsg("you",esc(v));
+  var p=parseCarry(v);
+  if(p){ if(isTrace(p.a)) startBlessed(p); else wrongAgent(p); return; }
+  if(/^(hi|hello|aloha|hey|yo)\b/i.test(v)){
+    say("Aloha! 🤙 Pick a card below and I'll walk you through real numbers — or paste a blessing code from <a href='"+HOME+"' rel='noopener'>myagentohana.com</a>.",700,homeQuicks); return; }
+  say("Hmm — that doesn't parse as a blessing code (I accept the raw code or a full link containing <span class='mono'>#ohana=…</span>). I'm a static door for now, so free-chat wiring is queued — but no code needed to watch me work on my own kitchen's real data:",800,homeQuicks);}
+
+/* ── open/close ── */
+function tchatOpenSilent(){el("tchat").classList.add("open");el("tchatBtn").style.display="none";S.open=true;}
+window.tchatOpen=function(){tchatOpenSilent();greet();try{$in.focus();}catch(e){}};
+window.tchatClose=function(){el("tchat").classList.remove("open");el("tchatBtn").style.display="flex";S.open=false;};
+
+/* ── boot ── */
+function boot(){
+  $log=el("tchatLog");$qr=el("tchatQR");$in=el("tchatIn");
+  el("tchatSend").onclick=onSend;
+  $in.addEventListener("keydown",function(e){if(e.key==="Enter")onSend();});
+  /* carried blessing: hash captured at parse time, or passport's sessionStorage from earlier in the session */
+  var p=null,m=RAWHASH.match(/[#&]ohana=([A-Za-z0-9_-]+)/);
+  if(m)p=parseCarry(m[1]);
+  if(!p){try{var s=sessionStorage.getItem("ohana-passport");if(s){var q=JSON.parse(s);if(q&&q.v===1&&q.c)p=q;}}catch(e){}}
+  if(p){S.greeted=true;setTimeout(function(){autoType(p,String(p.c));},700);}
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();
+})();
+</script>
+<script src="ohana-passport.js" data-agent="trace" data-name="Trace 👨" defer></script>
+</body></html>

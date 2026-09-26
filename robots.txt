@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tracewaste.org/sitemap.xml
